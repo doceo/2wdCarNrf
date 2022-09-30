@@ -16,6 +16,9 @@ int cmconv = 59;
 
 #define TRIG A5
 #define ECHO A4
+#define DEBUG
+
+
 /****************** User Config ***************************/
 /***      Set this radio as radio number 0 or 1         ***/
 bool radioNumber = 0;
@@ -82,34 +85,36 @@ void loop() {
   
   
 /****************** Ping Out Role ***************************/  
-
-Serial.print("distanza: ");
-Serial.println(dist());
-    
+  
     if( radio.available()){
                                                            // Variable for the received timestamp
-      while (radio.available()) {                          // While there is data ready
+      while (radio.available()) {    
+        Serial.print("rilevata la radio\n");// While there is data ready
         radio.read( &myData, sizeof(myData) );             // Get the payload
       }
 
       Y = (int)myData.asseY;
       X = (int)myData.asseX;
-
-      Serial.print(" vel e ster ricevuti sono: ");
-      Serial.print(Y);
-      Serial.print(",");
-      Serial.println(X);
+      
+      if((Y!=0,0)||(X!=0,0)){
+        Serial.print(" vel e ster ricevuti sono: ");
+        Serial.print(Y);
+        Serial.print(",");
+        Serial.println(X);  
+      }
+      
 
           
  
       vel = map (Y, -20, 20, -512, 512);
       ster = map (X, -20, 20, -512, 512);
+      if((vel!=0)||(ster!=0)){
 
-      Serial.print(" vel e ster mappati sono: ");
-      Serial.print(vel);
-      Serial.print(",");
-      Serial.println(ster);
-
+          Serial.print(" vel e ster mappati sono: ");
+          Serial.print(vel);
+          Serial.print(",");
+          Serial.println(ster);
+      }
       //i casi in cui il joypad si muove solo in avanti, indietro o è fermo
 
 //

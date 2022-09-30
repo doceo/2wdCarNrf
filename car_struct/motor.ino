@@ -152,17 +152,17 @@ void sinistra(int potenza) {
 
   long int distanza = 0.036 * duration /2;                                 //calcoliamo la distanza
 
-  Serial.print(" durata: ");                                               //stampiamo sul monitor seriale la durata del segnale e la distanza ottenuta
-  Serial.println(duration);
-  Serial.print(" distanza: ");
+  //Serial.print(" durata: ");                                               //stampiamo sul monitor seriale la durata del segnale e la distanza ottenuta
+  //Serial.println(duration);
+  //Serial.print(" : ");
 
   if (duration >380000) { 
           Serial.println("fuori portata");                                 //segnaliamo se la distanza è fuori dalla portata dello strumento
   
   }else { 
-           Serial.print(distanza); 
-           Serial.println ("cm");
-           Serial.println (" ");
+           //Serial.print(distanza); 
+           //Serial.println ("cm");
+           //Serial.println (" ");
          }
        
 //////evitiamo una divisione per zero, sostituendo lo zero con 1000
